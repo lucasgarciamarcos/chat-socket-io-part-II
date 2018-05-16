@@ -1,6 +1,6 @@
 ![logo do node girls](https://i.imgur.com/4QATtIp.png)
 
-# Chat com Node.js e Socket.io
+# Chat com Node.js e Socket.io Parte II
 
 Agradecimentos especiais ao tutorial disponível no Tableless (https://tableless.com.br/criando-uma-aplicacao-de-chat-simples-com-nodejs-e-socket-io/) e seus autores, que continuam como contribuintes do repositório aqui criado.
 
