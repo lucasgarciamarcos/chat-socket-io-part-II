@@ -5,8 +5,8 @@ var io = require('socket.io')(http);
 var clients = {}; 
 
 app.get('/', function(req, res){
-  res.send('server is running');
-});
+    res.sendFile(__dirname + '/index.html');
+  });
 
 io.on("connection", function (client) {  
     client.on("join", function(name){

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Simple chat</title>
-  <link rel="stylesheet" href="assets/css.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css.css">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 <div id="chat" hidden>
 
   <div class="menu">
-      <div class="name" id="name">Alex</div>
+      <div class="name" id="name">Camilla</div>
       <div class="last" id="time">18:09</div>
   </div>
 
@@ -27,8 +27,58 @@
   
   <input class="textarea" type="text" placeholder="Type here!" id="textarea" />
 </div>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/socket.io-client/socket.io.js"></script>
-    <script src="assets/js.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(document).ready(function(){  
+    var socket = io.connect("http://localhost:3000");
+    var ready = false;
+
+    $("#submit").submit(function(e) {
+		e.preventDefault();
+		$("#nick").fadeOut();
+		$("#chat").fadeIn();
+		var name = $("#nickname").val();
+		var time = new Date();
+		$("#name").html(name);
+		$("#time").html('First login: ' + time.getHours() + ':' + time.getMinutes());
+
+		ready = true;
+		socket.emit("join", name);
+
+	});
+
+	$("#textarea").keypress(function(e){
+        if(e.which == 13) {
+        	var text = $("#textarea").val();
+        	$("#textarea").val('');
+        	var time = new Date();
+        	$(".chat").append('<li class="self"><div class="msg"><span>' + $("#nickname").val() + ':</span><p>' + text + '</p><time>' + time.getHours() + ':' + time.getMinutes() + '</time></div></li>');
+        	socket.emit("send", text);
+
+        }
+    });
+
+
+    socket.on("update", function(msg) {
+    	if (ready) {
+    		$('.chat').append('<li class="info">' + msg + '</li>')
+    	}
+    }); 
+
+    socket.on("chat", function(client,msg) {
+    	if (ready) {
+	    	var time = new Date();
+	    	$(".chat").append('<li class="other"><div class="msg"><span>' + client + ':</span><p>' + msg + '</p><time>' + time.getHours() + ':' + time.getMinutes() + '</time></div></li>');
+    	}
+    });
+
+
+
+
+});
+
+
+    </script>
 </body>
 </html>
