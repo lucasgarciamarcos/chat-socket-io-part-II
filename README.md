@@ -33,15 +33,3 @@ No tutorial original eles utilizam o yarn, que é um "concorrente" do npm, mas n
 * Agora vamos dar um ```node app.js``` para rodar a aplicação.
 
 * Acesse no seu navegador http://localhost:3000 e digite o seu nome, depois dando um enter. Pronto, você já está no chat!
-
-### Desafios
-
-A dinâmica deste tutorial será diferente do primeiro, que foi mais um step-by-step. Neste, vamos propor alguns desafios:
-
-* Indentar o código;
-* Traduzir para o português os textos em inglês;
-* Tentar fazer o css funcionar (o erro é de CANNOT GET assets/css.css);
-* Colocar o logo do NodeGirls como favicon.
-
-Bora lá?
-
