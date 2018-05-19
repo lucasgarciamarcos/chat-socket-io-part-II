@@ -33,3 +33,5 @@ No tutorial original eles utilizam o yarn, que é um "concorrente" do npm, mas n
 * Agora vamos dar um ```node app.js``` para rodar a aplicação.
 
 * Acesse no seu navegador http://localhost:3000 e digite o seu nome, depois dando um enter. Pronto, você já está no chat!
+
+Bora lá!
