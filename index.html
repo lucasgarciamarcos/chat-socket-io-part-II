@@ -36,7 +36,7 @@
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
     $(document).ready(function () {
-      var socket = io.connect("http://localhost:3000");
+      var socket = io.connect(`${location.protocol}//${location.domain}`);
       var ready = false;
 
       $("#submit").submit(function (e) {
