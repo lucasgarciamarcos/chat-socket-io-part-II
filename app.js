@@ -4,6 +4,10 @@ var io = require('socket.io')(http);
 
 var clients = {};
 
+var port_number = http.listen(process.ev.port || 3000, function () {
+    app.listen(port_number);
+});
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
@@ -30,9 +34,4 @@ io.on("connection", function (client) {
         io.emit("update", clients[client.id] + " deixou o servidor.");
         delete clients[client.id];
     });
-});
-
-
-http.listen(3000, function () {
-    console.log('ouvindo na porta 3000');
 });
