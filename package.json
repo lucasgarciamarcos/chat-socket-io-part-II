@@ -17,5 +17,6 @@
     "socket.io-client": "^1.5.1",
     "socketio": "^1.0.0",
     "yarn": "^1.6.0"
-  }
+  },
+  "start": "app.js"
 }
