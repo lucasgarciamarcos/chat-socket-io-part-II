@@ -4,7 +4,7 @@ var io = require('socket.io')(http);
 
 var clients = {};
 
-var port_number = http.listen(process.ev.PORT || 3000);
+var port_number = http.listen(process.env.PORT || 3000);
 http.listen(port_number);
 
 app.get('/', function (req, res) {
