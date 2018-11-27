@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Daniel Campos <d.ericeira@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
   "repository": {
     "url": "http://",
     "type": "git"
@@ -17,6 +20,5 @@
     "socket.io-client": "^1.5.1",
     "socketio": "^1.0.0",
     "yarn": "^1.6.0"
-  },
-  "start": "app.js"
+  }
 }
