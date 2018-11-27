@@ -33,5 +33,5 @@ io.on("connection", function (client) {
 });
 
 var port_number = http.listen(process.env.PORT || 3000);
-console.log("Port: " + port);
+console.log("Port: " + port_number);
 app.listen(port_number);
