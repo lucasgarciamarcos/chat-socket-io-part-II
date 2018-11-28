@@ -169,9 +169,8 @@ a {
 }
 
 .msg time:before {
-    content: "\f017";
+    content: "\21BB";
     color: #ddd;
-    font-family: FontAwesome;
     display: inline-block;
     margin-right: 4px;
 }
