@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" type="image/png" href="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"/>
+  <link rel="shortcut icon" type="image/png" href="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" />
   <meta charset="UTF-8">
   <title>Simple chat</title>
   <link rel="stylesheet" type="text/css" href="/assets/css.css">
@@ -22,8 +22,8 @@
   <div id="chat" hidden>
 
     <div class="menu">
-      <div class="name" id="name">Camilla</div>
-      <div class="last" id="time">18:09</div>
+      <div class="name" id="name"></div>
+      <div class="last" id="time"></div>
     </div>
 
     <ol class="chat">
@@ -36,18 +36,36 @@
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
     $(document).ready(function () {
-      var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+      var full = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
       var socket = io.connect(full);
       var ready = false;
+
+      var getTime = function () {
+        var time = new Date();
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+
+        if (hours.length < 2)
+          hours = '0' + hours;
+
+        if (minutes.length < 2)
+          minutes = '0' + minutes;
+
+        return hours + ':' + minutes;
+      }
+
+      var scrollBottom = function () {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
 
       $("#submit").submit(function (e) {
         e.preventDefault();
         $("#nick").fadeOut();
         $("#chat").fadeIn();
         var name = $("#nickname").val();
-        var time = new Date();
+
         $("#name").html(name);
-        $("#time").html('Primeiro login: ' + time.getHours() + ':' + time.getMinutes());
+        $("#time").html('Primeiro login: ' + getTime());
 
         ready = true;
         socket.emit("join", name);
@@ -58,10 +76,10 @@
         if (e.which == 13) {
           var text = $("#textarea").val();
           $("#textarea").val('');
-          var time = new Date();
-          $(".chat").append('<li class="self"><div class="msg"><span>' + $("#nickname").val() + ':</span><p>' + text + '</p><time>' + time.getHours() + ':' + time.getMinutes() + '</time></div></li>');
+          $(".chat").append('<li class="self"><div class="msg"><span>' + $("#nickname").val() + ':</span><p>' + text + '</p><time>' + getTime() + '</time></div></li>');
           socket.emit("send", text);
-
+          scrollBottom();
+          
         }
       });
 
