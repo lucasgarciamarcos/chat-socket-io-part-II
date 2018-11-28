@@ -13,6 +13,14 @@ app.get('/assets/css.css', function (req, res) {
     res.sendFile(__dirname + '/assets/css.css');
 });
 
+app.get('/assets/font.css', function (req, res) {
+    res.sendFile(__dirname + '/assets/font.css');
+});
+
+app.get('/assets/font-awesome.min.css', function (req, res) {
+    res.sendFile(__dirname + '/assets/font-awesome.min.css');
+});
+
 io.on("connection", function (client) {
     client.on("join", function (name) {
         console.log("Entrou: " + name);
