@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <link rel="shortcut icon" type="image/png" href="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" />
+  <link rel="shortcut icon" type="image/png" href="https://cdn4.iconfinder.com/data/icons/keynote-and-powerpoint-icons/256/Messages-512.png" />
   <meta charset="UTF-8">
-  <title>Simple chat</title>
+  <title>Chatbox</title>
   <link rel="stylesheet" type="text/css" href="/assets/css.css">
 </head>
 
@@ -42,8 +42,8 @@
 
       var getTime = function () {
         var time = new Date();
-        var hours = time.getHours();
-        var minutes = time.getMinutes();
+        var hours = time.getHours().toString();
+        var minutes = time.getMinutes().toString();
 
         if (hours.length < 2)
           hours = '0' + hours;
@@ -79,7 +79,7 @@
           $(".chat").append('<li class="self"><div class="msg"><span>' + $("#nickname").val() + ':</span><p>' + text + '</p><time>' + getTime() + '</time></div></li>');
           socket.emit("send", text);
           scrollBottom();
-          
+
         }
       });
 
